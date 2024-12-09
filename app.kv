@@ -1,0 +1,93 @@
+# Create your Kivy layout in the kv language here
+BoxLayout:
+    orientation: 'horizontal'
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x: 0.3
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Sort by:'
+                color: 1, 1, 1, 1
+                background_color: 0, 0, 0, 1
+
+            Spinner:
+                id: sort_key
+                text_autoupdate: True
+                values: app.place_attributes
+                on_text: app.handle_spinner_selection()
+                color: 1, 1, 1, 1
+                background_color: 0.5, 0.5, 0.5, 1
+        Label:
+            text: 'Add New Place...'
+            color: 1, 1, 1, 1
+            background_color: 0, 0, 0, 1
+
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Name:'
+                color: 1, 1, 1, 1
+                background_color: 0, 0, 0, 1
+
+            TextInput:
+                id: name_input
+                background_color: 1, 1, 1, 1
+                multiline: False
+                write_tab: False
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Country:'
+                color: 1, 1, 1, 1
+                background_color: 0, 0, 0, 1
+
+            TextInput:
+                id: country_input
+                background_color: 1, 1, 1, 1
+                multiline: False
+                write_tab: False
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                text: 'Priority:'
+                color: 1, 1, 1, 1
+                background_color: 0, 0, 0, 1
+
+            TextInput:
+                id: priority_input
+                background_color: 1, 1, 1, 1
+                multiline: False
+                write_tab: False
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'Add Place'
+                on_release: app.handle_add_place()
+                color: 1, 1, 1, 1
+                background_color: 0.5, 0.5, 0.5, 1
+            Button:
+                text: 'Clear'
+                on_release: app.clear_fields()
+                color: 1, 1, 1, 1
+                background_color: 0.5, 0.5, 0.5, 1
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_x: 0.7
+        Label:
+            id: top_status
+            text: 'Places to visit: '
+            color: 1, 1, 1, 1
+            background_color: 0, 0, 0, 1
+            size_hint_y: 0.09
+
+        BoxLayout:
+            orientation: 'vertical'
+            id: places_buttons
+
+        Label:
+            id: bottom_status
+            text: app.status_message
+            color: 1, 1, 1, 1
+            background_color: 0, 0, 0, 1
+            size_hint_y: 0.11
